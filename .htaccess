@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /UTM/
+
+    # Rewrite rule to route all requests to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ route.php?path=$1 [L,QSA]
+</IfModule>
+
+AuthType Basic
+AuthName "Protected Directory"
+AuthUserFile "C:/xampp/htdocs/UTM/.htpasswd"
+Require valid-user
+
