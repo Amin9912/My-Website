@@ -49,9 +49,20 @@ switch ($path) {
     case 'resume-controller':
         include 'controller/resumeController.php';
         break;
+    case 'dashboard-config':
+        include 'view/dashboard/dashboard_config.php';
+        break;
+    case 'dashboardController':
+        include 'controller/dashboardController.php';
+        break;
+    case 'dashboard-portfolio':
+        include 'view/dashboard/portfolio.php';
+        break;
+    case 'dashboard-timeline':
+        include 'view/dashboard/timeline.php';
+        break;
     default:
         http_response_code(404);
         include 'view/404.php';
         break;
 }
-?>

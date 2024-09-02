@@ -16,7 +16,7 @@
   }
   
   .glass-card .content {
-    max-width: 100%;
+    max-width: auto;
     background: rgba(255, 255, 255, 0);
   }
   

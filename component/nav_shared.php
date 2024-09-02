@@ -10,25 +10,37 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="true">Resume</a>
-                    <div class="dropdown-menu mt-2" data-bs-popper="static">
-                        <a class="dropdown-item" href="resume-setup">Resume Setup</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="true">Accessment</a>
-                    <div class="dropdown-menu mt-2" data-bs-popper="static">
-                        <a class="dropdown-item" href="utm-travel-record">UTM Travel Record</a>
-                        <a class="dropdown-item" href="<?php echo GLOB_BASE_URL; ?>fyp" target="blank">FYP project</a>
-                        <a class="dropdown-item" href="<?php echo GLOB_BASE_URL; ?>wad-final-project/login.php"
-                            target="blank">WAD
-                            project</a>
-                        <a class="dropdown-item" href="tic-tac-toe">Tic tac toe</a>
-                    </div>
-                </li>
+                <?php 
+                if(!empty($user)){ ?>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="true">Setup</a>
+                        <div class="dropdown-menu mt-2" data-bs-popper="static">
+                            <?php 
+                                if(!empty($user)&&$user->role == 1){
+                                    echo '<a class="dropdown-item" href="dashboard-config">Dashboard</a>';
+                                }
+                            ?>
+                            <a class="dropdown-item" href="resume-setup">Resume</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="true">Accessment</a>
+                        <div class="dropdown-menu mt-2" data-bs-popper="static">
+                            <a class="dropdown-item" href="utm-travel-record">UTM Travel Record</a>
+                            <a class="dropdown-item" href="<?php echo GLOB_BASE_URL; ?>fyp" target="blank">FYP project</a>
+                            <a class="dropdown-item" href="<?php echo GLOB_BASE_URL; ?>wad-final-project/login.php"
+                                target="blank">WAD
+                                project</a>
+                            <a class="dropdown-item" href="tic-tac-toe">Tic tac toe</a>
+                        </div>
+                    </li>
+
+                <?php 
+                }
+                ?>
             </ul>
             <form class="d-flex">
                 <?php if (isset($user->username)) { ?>

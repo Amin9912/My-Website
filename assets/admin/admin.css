@@ -22,7 +22,19 @@
     margin-top: 50px;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
-    --animate-duration: 2000ms;
+    --animate-duration: 1000ms;
     --animate-delay: 1s;
   }
+
+  .animate__animated {
+    --animate-duration: 2000ms;
+}

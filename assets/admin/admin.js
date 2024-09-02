@@ -175,6 +175,52 @@
 })(jQuery);
 
 document.addEventListener('DOMContentLoaded', function () {
+
+  function isFullyOutOfViewport (element) {
+    const rect = element.getBoundingClientRect()
+    return (
+      rect.bottom < 0 ||
+      rect.top > window.innerHeight ||
+      rect.right < 0 ||
+      rect.left > window.innerWidth
+    )
+  }
+
+  function findAnimationClass (element, substring) {
+    // Find the full class name that contains the given substring
+    for (let cls of element.classList) {
+      if (cls.includes(substring)) {
+        return cls
+      }
+    }
+    return null // No class found with the substring
+  }
+
+  const animationClasses = {
+    xfadeIn: 'animate__fadeIn',
+    xfadeInLeft: 'animate__fadeInLeft',
+    xfadeInRight: 'animate__fadeInRight'
+  }
+
+  const elements = document.querySelectorAll('.animate__animated')
+
+  function checkElements () {
+    elements.forEach(element => {
+      let appliedClass = findAnimationClass(element, 'xfade')
+      if(appliedClass){
+        if (isFullyOutOfViewport(element)) {
+          element.classList.remove(animationClasses[appliedClass])
+        } else {
+          element.classList.add(animationClasses[appliedClass])
+        }
+      }
+    })
+  }
+
+  window.addEventListener('scroll', checkElements)
+
+  checkElements()
+
   $('.counter').each(function () {
     let start = Number($(this).attr('data-start'))
     let end = Number($(this).attr('data-end'))
@@ -524,5 +570,41 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   $.setupGraph()
+
+  $(document).on('click', '#addHTMLBtn', function () {
+    var date = new Date()
+    var target = $(this).attr('target')
+    var name = $(this).attr('data-name')
+    var title = $(this).attr('data-title')
+    var totalRows = $(target + ' .col-lg-6').length // Count the number of rows with class 'education-row'
+    var newRowId = totalRows + 1 // Create a unique id for the new row
+    console.log(target)
+
+    // Define the new row HTML
+    var newRow =
+      `
+                  <div class="col-lg-6" id="${name}${newRowId}">
+                      <label for="${name}">${title} ${newRowId}</label>
+                      <textarea name="${name}[${newRowId}]" class="form-control html-editor" id="${name}_info_` +
+      date.getTime() +
+      `"></textarea>
+                          </div>
+                  `
+    $(target).append(newRow)
+
+    tinymce.init({
+      selector: '.html-editor'
+    })
+  })
+
+  $(document).on('click', '#removeHTMLBtn', function () {
+    var target = $(this).attr('target')
+    var remove_target = $(this).attr('remove-target')
+    var totalRows = $(target + ' .col-lg-6').length
+
+    console.log('#' + remove_target + totalRows)
+    $('#' + remove_target + totalRows).remove()
+  })
+
 
 })

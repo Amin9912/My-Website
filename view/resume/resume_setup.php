@@ -1,9 +1,10 @@
 <?php
+use UTM\Helper\FieldHelper;
+
 include 'config.php';
 require 'vendor/autoload.php';
 include(__DIR__.'/../../controller/validate_token.php');
 include(__DIR__.'/../../model/resumeModel.php');
-include(__DIR__.'/../../component/fieldHelper.php');
 $title = 'Home Page';
 $data = items($user->id);
 /*echo '<pre>';
@@ -21,7 +22,7 @@ if(!empty($user)){?>
                 <h4 class="card-title">Resume Setup</h4>
             </div>
             <div>
-                <input type="text" id="id" name="id" value="<?php echo $user->id ?>">
+                <input type="hidden" id="id" name="id" value="<?php echo $user->id ?>">
                 <input type="hidden" id="task" name="task" value="<?= $data?'update':'create' ?>">
                 <input type="submit" class="btn btn-primary" name="Apply" value="Apply">
                 <?php 
@@ -57,9 +58,9 @@ if(!empty($user)){?>
                 </div>
 
                 <?php
-                showTextarea($title='Education',$var_name='education',$data);
-                showTextarea($title='Work Experience',$var_name='work_experience',$data);
-                showTextarea($title='Curriculum',$var_name='curriculum',$data);
+                FieldHelper::getHTMLField($title='Education',$var_name='education',$data);
+                FieldHelper::getHTMLField($title='Work Experience',$var_name='work_experience',$data);
+                FieldHelper::getHTMLField($title='Curriculum',$var_name='curriculum',$data);
                 ?>
 
                 <div class="col-lg-6 p-4">

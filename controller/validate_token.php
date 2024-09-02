@@ -27,4 +27,3 @@ if(!empty($_SESSION['opaqueToken'])){
       header("Location: ".BASE_URL."token-expired");
       exit();
   }
-?>

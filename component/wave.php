@@ -2,12 +2,12 @@
 <div class="header">
 
     <!--Content before waves-->
-    <div class="inner-header flex animate__animated animate__fadeIn">
+    <div class="inner-header flex animate__animated xfadeIn animate__fadeIn">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 text-center mx-auto">
-                    <h1 class="text-white pt-3 mt-n5 fw-bold">Soft UI Design System Pro</h1>
-                    <p class="lead text-white mt-3">Simple and innovative Web UI Kit built on top of Bootstrap 5. <br> Join over 1.4 million developers around the world. </p>
+                    <h1 class="text-white pt-3 mt-n5 fw-bold">Muhamad Khairul Amin</h1>
+                    <p class="lead text-white mt-3">A Bachelor of Science Computer(HONS) student from University of Selangor. <br> Officially graduate in 21 & 22 November 2024. </p>
                 </div>
             </div>
         </div>

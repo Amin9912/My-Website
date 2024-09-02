@@ -1,3 +1,6 @@
+<?php 
+include 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +58,7 @@
     <div class="container">
         <h1>404</h1>
         <p>Sorry, token expired. Please login again</p>
-        <a href="login" class="btn">Go to login page</a>
+        <a href="<?= BASE_URL ?>login" class="btn">Go to login page</a>
     </div>
 </body>
 

@@ -3,7 +3,9 @@ include 'config.php';
 include(__DIR__.'/../../controller/validate_token.php');
 require(__DIR__.'/../../assets/tcpdf/tcpdf.php');
 include(__DIR__.'/../../model/resumeModel.php');
-$data = items($user->id);
+$data = items($_GET['id'] ?? $user->id);
+if(isset($_SESSION['success'])){unset($_SESSION['success']);}
+//die($_GET['id']);
 //$data = items(6);
 
 /*echo '<pre>';

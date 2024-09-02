@@ -95,8 +95,9 @@ if($task == 'create'){
 
             $id = trim($_GET['id']);
             $sql = "SELECT * FROM travelling_details WHERE id = ?";
+            $stmt = $conn->prepare($sql);
 
-            if ($stmt = $conn->prepare($sql)) {
+            if($stmt) {
                 $stmt->bind_param("i", $id);
                 if ($stmt->execute()) {
                     $result = $stmt->get_result();
@@ -122,9 +123,7 @@ if($task == 'create'){
                 $conn->close();
                 header("Location: ".BASE_URL."home");
                 exit();
-            } else {
-
-                $stmt->close();
+            }else {
                 $conn->close();
                 
                 $_SESSION['error'] = "Database error: unable to prepare statement.";
@@ -169,4 +168,3 @@ if($task == 'create'){
     header("Location: ".BASE_URL."utm-travel-record");
     exit();
 }
-?>
